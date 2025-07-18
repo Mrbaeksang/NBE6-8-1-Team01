@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/contexts/AuthContext"
-import { productsApi } from "@/lib/api"
+import { productApi } from "@/lib/api"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 import { Trash2, Edit, Plus, Package, Loader2 } from "lucide-react"
@@ -66,7 +66,7 @@ export default function AdminProductsPage() {
   const fetchProducts = async () => {
     try {
       setIsLoading(true)
-      const response = await productsApi.getProducts()
+      const response = await productApi.getProducts()
       if (response.success) {
         setProducts(response.data)
       }
@@ -104,7 +104,7 @@ export default function AdminProductsPage() {
 
       if (editingProduct) {
         // 수정 API 호출
-        const response = await productsApi.updateProduct(editingProduct.productId, productData)
+        const response = await productApi.updateProduct(editingProduct.productId, productData)
         if (response.success) {
           toast({
             title: "상품 수정 완료",
@@ -113,7 +113,7 @@ export default function AdminProductsPage() {
         }
       } else {
         // 등록 API 호출
-        const response = await productsApi.createProduct(productData)
+        const response = await productApi.createProduct(productData)
         if (response.success) {
           toast({
             title: "상품 등록 완료",
@@ -141,7 +141,7 @@ export default function AdminProductsPage() {
     if (!confirm('정말로 이 상품을 삭제하시겠습니까?')) return
 
     try {
-      const response = await productsApi.deleteProduct(productId)
+      const response = await productApi.deleteProduct(productId)
       if (response.success) {
         toast({
           title: "상품 삭제 완료",

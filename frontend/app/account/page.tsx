@@ -42,7 +42,7 @@ export default function AccountPage() {
       setIsDeleting(true)
       const response = await authApi.deleteUser(user.email)
       
-      if (response.success) {
+      if (response.resultCode === '200-DELETED') {
         toast({
           title: "회원 탈퇴 완료",
           description: "그동안 이용해주셔서 감사합니다.",
