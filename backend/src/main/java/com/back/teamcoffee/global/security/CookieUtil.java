@@ -7,7 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.Arrays;
 
-public class CookieUtil {
+public class
+CookieUtil {
     private static final String ACCESS = "AccessToken";
     private static final String REFRESH = "RefreshToken";
     private static Cookie buildCookie(String name, String value, int maxAge) {
